@@ -1,0 +1,62 @@
+<div class="products-list">
+  <nz-table
+    nzTitle="All Product List"
+    #fixedTable
+    [nzScroll]="{ x: '2050px', y: '540px' }"
+    [nzPageSize]="10"
+    [nzData]="productList()"
+    [nzShowPagination]="true"
+  >
+    <thead>
+      <tr>
+        <th nzLeft>Product Id</th>
+        <th nzLeft>Product Name</th>
+        <th>Product Price</th>
+        <th>Category Name</th>
+        <th>Category Id</th>
+        <th>Product Sku</th>
+        <th>Delivery Time Span</th>
+        <th>Created Date</th>
+        <th nzRight>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of productList(); track data) {
+      <tr>
+        <td nzLeft>{{ data.productId }}</td>
+        <td nzLeft>{{ data.productName }}</td>
+        <td>{{ data.productPrice }}</td>
+        <td nzBreakWord>{{ data.categoryName }}</td>
+        <td nzBreakWord>{{ data.categoryId }}</td>
+        <td nzBreakWord>{{ data.productSku }}</td>
+        <td nzBreakWord>{{ data.deliveryTimeSpan }}</td>
+        <td nzBreakWord>{{ data.createdDate | date : "yyyy-mm-dd" }}</td>
+        <td nzRight>
+          <div>
+            <span
+              class="products-list__edit"
+              nz-icon
+              nzType="edit"
+              nzTheme="outline"
+            ></span>
+            <span
+              (click)="onDeleteIconClicked(data.productId)"
+              class="products-list__delete"
+              nz-icon
+              nzType="delete"
+              nzTheme="outline"
+            ></span>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </nz-table>
+  @if (isModalVisible) {
+  <app-modal
+    [title]="'Do you want to delete?'"
+    (ok)="onOkModal()"
+    (cancel)="onCancelModal()"
+  ></app-modal>
+  }
+</div>

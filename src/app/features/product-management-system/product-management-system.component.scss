@@ -1,0 +1,11 @@
+@import "index.scss";
+
+.products-list {
+  margin: 20px;
+  &__edit,
+  &__delete {
+    margin: 5px;
+    color: $color-blue;
+    font-size: 15px;
+  }
+}

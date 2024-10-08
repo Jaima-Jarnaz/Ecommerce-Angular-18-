@@ -1,0 +1,36 @@
+@import "index.scss";
+
+.product-category {
+  margin: 30px;
+
+  &__cards-contents {
+    background-color: $color-light-cream;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    height: 600px;
+    overflow: scroll;
+    padding: 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  }
+
+  &__cards {
+    width: 200px;
+    max-height: 250px;
+    background-color: aliceblue;
+  }
+  &__cards-img {
+    width: 100%;
+    height: 120px;
+  }
+  &__cards-text {
+    width: 150px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.ant-tabs-left {
+  height: 520px !important;
+}

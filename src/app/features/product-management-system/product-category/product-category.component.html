@@ -1,0 +1,63 @@
+<div class="product-category">
+  <nz-radio-group [(ngModel)]="nzTabPosition" style="margin-bottom: 8px">
+    <label nz-radio-button [nzValue]="'top'">Horizontal</label>
+    <label nz-radio-button [nzValue]="'left'">Vertical</label>
+  </nz-radio-group>
+  <nz-input-number
+    style="float: right"
+    [nzMin]="0"
+    [nzMax]="29"
+    [(ngModel)]="selectedIndex"
+  ></nz-input-number>
+
+  <nz-tabset
+    [nzTabPosition]="nzTabPosition"
+    [(nzSelectedIndex)]="selectedIndex"
+    (nzSelectChange)="log([$event])"
+  >
+    @for (tab of categoryList$ | async; track tab) {
+    <nz-tab
+      [nzTitle]="tab.categoryName"
+      (nzSelect)="log(['select', tab])"
+      (nzClick)="tabClicked(['select', tab])"
+    >
+      <div class="product-category__cards-contents">
+        @for (item of productList$ |async; track $index) {
+        <div class="product-category__cards">
+          <nz-card
+            [nzCover]="coverTemplate"
+            [nzActions]="[actionSetting, actionEdit, actionEllipsis]"
+          >
+            <nz-card-meta
+              [nzTitle]="item.productName"
+              [nzDescription]="item.productDescription"
+              [nzAvatar]="avatarTemplate"
+              class="product-category__cards-text"
+            ></nz-card-meta>
+          </nz-card>
+          <ng-template #avatarTemplate>
+            <nz-avatar [nzSrc]="item.productImageUrl"></nz-avatar>
+          </ng-template>
+          <ng-template #coverTemplate>
+            <img
+              [alt]="item.productName"
+              [src]="item.productImageUrl"
+              class="product-category__cards-img"
+            />
+          </ng-template>
+          <ng-template #actionSetting>
+            <span nz-icon nzType="setting"></span>
+          </ng-template>
+          <ng-template #actionEdit>
+            <span nz-icon nzType="edit"></span>
+          </ng-template>
+          <ng-template #actionEllipsis>
+            <span nz-icon nzType="ellipsis"></span>
+          </ng-template>
+        </div>
+        }
+      </div>
+    </nz-tab>
+    }
+  </nz-tabset>
+</div>
