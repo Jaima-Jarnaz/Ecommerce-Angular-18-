@@ -1,0 +1,11 @@
+@import "index.scss";
+
+.ant-tree-show-line .ant-tree-switcher {
+  background-color: $color-light-blue !important;
+}
+
+.ant-tree-switcher .ant-tree-switcher-noop .nz-tree-leaf-line-icon {
+  span {
+    background-color: $color-light-blue !important;
+  }
+}

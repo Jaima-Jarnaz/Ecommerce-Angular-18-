@@ -1,0 +1,59 @@
+<nz-layout class="layout">
+  <nz-sider
+    nzcollapsible
+    [nzTrigger]="null"
+    [className]="!isCollapsed ? 'layout__sidebar' : 'layout__sidebar-collapsed'"
+  >
+    @if (isCollapsed) {
+    <div class="layout__sidebar-collapsed-contents">
+      <div class="layout__sidebar-collapsed-logo-content">
+        <span
+          class="layout__collapsable-menu"
+          nzType="bars"
+          nzTheme="outline"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></span>
+      </div>
+      <div class="layout__collapsable-menu-items">
+        <app-collapsable-menu></app-collapsable-menu>
+      </div>
+    </div>
+    }@else {
+    <div class="layout__logo-content">
+      <img
+        class="layout__logo-image"
+        src="../../../assets/images/logo.png"
+        alt="logo"
+      />
+      <span
+        class="layout__collapsable-menu"
+        nzType="bars"
+        nzTheme="outline"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      ></span>
+    </div>
+    <div class="layout__tree-view-menu">
+      <app-tree-view-menu></app-tree-view-menu>
+    </div>
+    }
+  </nz-sider>
+
+  <nz-layout class="layout__page-inner-content">
+    <nz-header class="layout__header"> </nz-header>
+    <!-- <nz-content class="">
+      <nz-breadcrumb>
+        <nz-breadcrumb-item>User</nz-breadcrumb-item>
+        <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <div class="inner-content">Bill is a cat.</div>
+    </nz-content> -->
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </nz-layout>
+</nz-layout>

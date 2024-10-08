@@ -1,0 +1,43 @@
+@import "index.scss";
+
+.modal-content {
+  &__modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $box-shadow-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  &__modal {
+    background-color: $color-white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    box-shadow: $box-shadow-modal;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header h3 {
+    margin: 0;
+  }
+
+  &__body {
+    margin: 15px 0;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}

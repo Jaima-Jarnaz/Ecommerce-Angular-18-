@@ -1,0 +1,62 @@
+@import "variable.scss";
+
+.layout {
+  width: 100%;
+  height: 100%;
+
+  &__sidebar {
+    background: $color-white;
+    padding: 20px;
+    border-right: 1px solid $color-blue;
+    transition: all 0.5s;
+  }
+  &__sidebar-collapsed {
+    background: $color-cream-white;
+    padding: 20px;
+    border-right: 1px solid $color-blue;
+    min-width: 80px !important;
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    transition: all 0.5s;
+  }
+
+  &__logo-content {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color-blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__sidebar-collapsed-logo-content,
+  &__sidebar-collapsed-contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  &__tree-view-menu {
+    padding-top: 20px !important;
+  }
+  &__collapsable-menu {
+    font-size: 25px;
+    color: $color-blue;
+    cursor: pointer;
+  }
+  &__collapsable-menu-items {
+    padding-top: 20px;
+  }
+
+  &__header {
+    background-color: $color-white;
+    border-bottom: 1px solid $color-blue;
+  }
+  &__page-inner-content {
+    background-color: $color-light-blue !important;
+  }
+}

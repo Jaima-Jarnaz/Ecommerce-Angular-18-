@@ -1,0 +1,12 @@
+<ul class="collapsable-menu">
+  @for (item of menuItems; track $index) {
+  <li class="collapsable-menu__item">
+    <span
+      nz-icon
+      [nzType]="item.icon"
+      nzTheme="outline"
+      [routerLink]="item.url"
+    ></span>
+  </li>
+  }
+</ul>
