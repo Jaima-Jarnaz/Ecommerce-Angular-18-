@@ -1,4 +1,7 @@
 # Ecommerce
+Run the project in port 4209 as free  API used 
+
+Run `ng serve --port 4209`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
 
