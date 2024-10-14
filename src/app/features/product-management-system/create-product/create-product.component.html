@@ -1,0 +1,201 @@
+<div class="create-product">
+  <!-- <form action="" [formGroup]="productFormData">
+    <input
+      class="create-product__input"
+      type="text"
+      formControlName="productName"
+    />
+    <app-button
+      [bgColor]="'blue'"
+      [text]="'Submit'"
+      (click)="onSubmitForm()"
+    ></app-button>
+  </form> -->
+</div>
+
+<div class="dynamic-form-container">
+  <div class="dynamic-form-container__header">
+    <div nz-flex nzJustify="space-between">
+      <h1>Create New Product</h1>
+      <div nz-flex nzGap="small">
+        <button
+          nz-button
+          nzDanger
+          nzSize="large"
+          nzType="primary"
+          nzShape="round"
+        >
+          <span nz-icon nzType="delete"></span>
+          Remove
+        </button>
+        <button
+          class="dynamic-form-container__addBtn"
+          nz-button
+          nzType="primary"
+          nzSize="large"
+          nzShape="round"
+          (click)="addField()"
+        >
+          <span nz-icon nzType="plus"></span>
+          Add More
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-form-container__contents">
+    <form
+      class="dynamic-form-container__form"
+      [formGroup]="dynamicForm"
+      (ngSubmit)="onSubmitForm()"
+    >
+      <!-- Loop through form array fields and display them -->
+      <div
+        formArrayName="inputFields"
+        *ngFor="let field of inputFields.controls; let i = index"
+      >
+        <div [formGroupName]="i">
+          <div nz-row>
+            <div nz-col nzSpan="12">
+              <label for="label-{{ i }}">Product Name</label>
+              <input
+                id="label-{{ i }}"
+                formControlName="productName"
+                placeholder="Product Name"
+                class="dynamic-form-container__input"
+              />
+              <div
+                *ngIf="
+                  field.get('productName')?.invalid &&
+                  field.get('productName')?.touched
+                "
+                class="dynamic-form-container__error"
+              >
+                Product Name is required
+              </div>
+            </div>
+
+            <div nz-col nzSpan="12">
+              <label for="value-{{ i }}">Product Price</label>
+              <input
+                id="value-{{ i }}"
+                formControlName="productPrice"
+                class="dynamic-form-container__input"
+              />
+              <div
+                *ngIf="
+                  field.get('productPrice')?.invalid &&
+                  field.get('productPrice')?.touched
+                "
+                class="dynamic-form-container__error"
+              >
+                Product Price is required.
+              </div>
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzSpan="12">
+              <label for="label-{{ i }}">Description</label>
+              <input
+                id="label-{{ i }}"
+                formControlName="productDescription"
+                class="dynamic-form-container__input"
+              />
+            </div>
+
+            <div nz-col nzSpan="12">
+              <label for="label-{{ i }}">Short Name</label>
+              <input
+                id="value-{{ i }}"
+                formControlName="productShortName"
+                placeholder="Short Name"
+                class="dynamic-form-container__input"
+              />
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzSpan="12">
+              <label for="label-{{ i }}">Select Category</label>
+              <nz-select
+                nzBorderless
+                formControlName="categoryId"
+                class="dynamic-form-container__input"
+              >
+                @for (item of categoryList$ |async; track $index) {
+                <nz-option
+                  [nzValue]="item.categoryId"
+                  [nzLabel]="item.categoryName"
+                ></nz-option>
+                }
+              </nz-select>
+              <!-- <input
+                id="label-{{ i }}"
+                formControlName="categoryId"
+                class="dynamic-form-container__input"
+              /> -->
+              <div
+                *ngIf="
+                  field.get('categoryId')?.invalid &&
+                  field.get('categoryId')?.touched
+                "
+                class="dynamic-form-container__error"
+              >
+                Category is required
+              </div>
+            </div>
+
+            <div nz-col nzSpan="12">
+              <label for="value-{{ i }}">Delivery Time Span</label>
+              <input
+                id="value-{{ i }}"
+                formControlName="deliveryTimeSpan"
+                placeholder="Ex: 2 days"
+                class="dynamic-form-container__input"
+              />
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzSpan="12">
+              <label for="label-{{ i }}">Image Url</label>
+              <input
+                type="file"
+                id="label-{{ i }}"
+                formControlName="productImageUrl"
+                class="dynamic-form-container__input"
+              />
+            </div>
+            <div nz-col nzSpan="12">
+              <label for="value-{{ i }}">Delivery Time Span</label>
+              <input
+                type="date"
+                id="value-{{ i }}"
+                formControlName="deliveryTimeSpan"
+                class="dynamic-form-container__input"
+              />
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzSpan="12">
+              <label for="value-{{ i }}">Created Date</label>
+              <nz-date-picker formControlName="createdDate"></nz-date-picker>
+            </div>
+
+            <button
+              class="dynamic-form-container__submitBtn"
+              nzBlock
+              nz-button
+              nzType="primary"
+              nzSize="large"
+              nzShape="round"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+@import "index.scss";
+.button {
+  padding: 6px 10px;
+  color: $color-white;
+  border-radius: 8px;
+
+  &__blue {
+    background-color: $color-blue;
+  }
+  &__danger {
+    background-color: red;
+  }
+}

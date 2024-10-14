@@ -25,6 +25,14 @@ export default [
       ),
   },
   {
+    path: 'create-product',
+    title: 'create-product',
+    loadComponent: () =>
+      import('./create-product/create-product.component').then(
+        (c) => c.CreateProductComponent
+      ),
+  },
+  {
     path: 'product-category',
     title: 'product-category',
     loadComponent: () =>

@@ -46,7 +46,7 @@ export const Tree_Data: TreeNode[] = [
         title: 'All Product',
         link: '/app/products',
         children: [
-          { title: 'Create ', link: '#' },
+          { title: 'Create ', link: '/app/create-product' },
           { title: 'Search ', link: '#' },
         ],
       },
